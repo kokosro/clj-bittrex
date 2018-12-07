@@ -6,7 +6,7 @@
 A clojure library for communicating with bittrex rest api.
 
 ```clj
-[org.clojars.kokos/clj-bittrex "0.0.0"]
+[org.clojars.kokos/clj-bittrex "0.1.0"]
 ```
 
 ## Usage
