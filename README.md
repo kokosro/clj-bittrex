@@ -1,6 +1,4 @@
 # clj-bittrex
-[![Build Status](https://travis-ci.org/kokosro/clj-bittrex.svg?branch=master)](https://travis-ci.org/kokosro/clj-bittrex)
-[![codecov](https://codecov.io/gh/kokosro/clj-bittrex/branch/master/graph/badge.svg)](https://codecov.io/gh/kokosro/clj-bittrex)
 [![Clojars Project](https://img.shields.io/clojars/v/org.clojars.kokos/clj-bittrex.svg)](https://clojars.org/org.clojars.kokos/clj-bittrex)
 
 A clojure library for communicating with bittrex rest api.
@@ -12,9 +10,30 @@ A clojure library for communicating with bittrex rest api.
 ## Usage
 all functions in clj-bittrex.core require a configuration object as first argument
 ```clj
-{:key "...."
- :secret "..."
- :url "https://api.bittrex.com/api/v1.1"}
+ 
+ (ns example
+  (:require [clj-bittrex.core :as bittrex])
+  (:gen-class))
+
+(def conf 
+ {:key "...."
+  :secret "..."
+  :url "https://api.bittrex.com/api/v1.1"})
+
+(defn load-portfolio
+  []
+  (reduce
+   (fn [r c]
+     (if (< 0.0 (:Balance c))
+         (assoc r (keyword (:Currency c))
+            {:balance (:Available c)
+             :pending (:Pending c)
+             :deposit-at (:CryptoAddress c)})
+         r))
+   {}
+   (bittrex/getbalances con))))
+
+ 
 ```
 ## License
 
