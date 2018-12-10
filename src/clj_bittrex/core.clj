@@ -74,7 +74,7 @@
 
 (defn selllimit
   [options market quantity rate]
-  (request/market :buylimit
+  (request/market :selllimit
                   {:market (name market)
                    :quantity (if (string? quantity)
                                quantity

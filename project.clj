@@ -1,4 +1,4 @@
-(defproject org.clojars.kokos/clj-bittrex "0.1.0"
+(defproject org.clojars.kokos/clj-bittrex "0.1.1"
   :description "FIXME: write description"
   :url "https://github.com/kokosro/clj-bittrex"
   :license {:name "Eclipse Public License"
